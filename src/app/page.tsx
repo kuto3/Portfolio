@@ -43,17 +43,26 @@ export default function Home() {
   return (
     <>
     
-    <div className="flex flex-col justify-center items-center m-9">
+    <div className="flex flex-col justify-center items-center m-9 space-y-4">
       <div className="flex flex-col h-10 justify-center items-center mb-4">
         Enzo Rolandin Portfolio 
-        <Link href="#about-me">About me</Link>
+        <div>enzo.rolandin@gmail.com</div>
+    
         </div>
+        <div className="h-24 flex justify-center ">I am 19 years old, I live in Bretagne in France.
+ I am motivated, creative.
+ I like computers, music and history.
+ I speak French and English 
+
+ </div>
+
         <div className="flex w-full">
+     
           
         <div className="w-1/12"></div>
         <div className="flex flex-col items-center  h-auto w-full rounded-xl border-2  border-white p-5 space-y-5">
-          <div className="my-5 font-bold ">Durandall - 2024</div>
-         Durandall is a project to build an shopping website with a huge database, i trained my prisma skills and Tailwind with Next to build an elegant website
+          <div className="my-5 font-bold ">Multislot - 2025</div>
+         Multislot was an project of blockchain casino, i finish the system that enable people to create there own slot machine but i stopped develop this website cause a casino licence is too expensive.
           
         <div className="relative h-full w-full">
       {/* Carousel Wrapper */}
@@ -130,7 +139,7 @@ export default function Home() {
         <div className="flex w-full">
           
           <div className="w-1/12"></div>
-          <div className="flex flex-col items-center  h-auto w-full rounded-xl border-2 border-t-0 border-white p-5 space-y-5">
+          <div className="flex flex-col items-center  h-auto w-full rounded-xl border-2 border-white p-5 space-y-5">
             <div className="my-5 font-bold ">CertiFi - 2023</div>
             certifiyou.org was a complete working website, a easy solution to build smart contract for 100% secure diplomas, and certificates, with a whitelist solution. The creator was able to design with picture text an NFT, and let someone mint it as a diploma or other things. Now the database is down but i will be able to relaunch it.
             <Image
