@@ -3,11 +3,26 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const projects = [
+type Technology = 
+  'Next.js' | 'React' | 'Tailwind CSS' | 'Prisma' | 'TypeScript' | 'Stripe' | 
+  'Google Maps API' | 'Solidity' | 'RainbowKit' | 'Ethers.js' | 'PostgreSQL' | 
+  'Hardhat' | 'IPFS';
+
+interface Project {
+  title: string;
+  description: string;
+  technologies: Technology[];
+  media: Array<{
+    type: 'image' | 'video';
+    src: string;
+  }>;
+}
+
+const projects: Project[] = [
   {
     title: "ExpatMe.fr - 2025 (En développement)",
     description: "Plateforme d'aide à l'expatriation avec quizz personnalisé. Intègre : API Google Maps, Prisma ORM, Stripe pour les paiements, et système de recommandation basé sur les réponses. Projet non finalisé mais architecture de base fonctionnelle.",
-    technologies: ["Next.js", "React", "Tailwind CSS", "Prisma", "Stripe", "Google API", "TypeScript"],
+    technologies: ["Next.js", "React", "Tailwind CSS", "Prisma", "Stripe", "Google Maps API", "TypeScript"],
     media: [
       { type: 'image', src: '/expatme1.png' },
       { type: 'image', src: '/expatme2.png' },
@@ -44,7 +59,7 @@ const projects = [
   }
 ];
 
-const techColors = {
+const techColors: Record<Technology, string> = {
   'Next.js': 'bg-blue-600',
   'React': 'bg-sky-600',
   'Tailwind CSS': 'bg-cyan-500',
@@ -61,10 +76,10 @@ const techColors = {
 };
 
 export default function Home() {
-  const [currentIndices, setCurrentIndices] = useState(projects.map(() => 0));
-  const [expandedProjects, setExpandedProjects] = useState(projects.map(() => false));
+  const [currentIndices, setCurrentIndices] = useState<number[]>(projects.map(() => 0));
+  const [expandedProjects, setExpandedProjects] = useState<boolean[]>(projects.map(() => false));
 
-  const toggleProject = (index : any) => {
+  const toggleProject = (index: number) => {
     setExpandedProjects(prev => {
       const newState = [...prev];
       newState[index] = !newState[index];
@@ -72,7 +87,7 @@ export default function Home() {
     });
   };
 
-  const navigateSlide = (projectIndex : any, directio : any) => {
+  const navigateSlide = (projectIndex: number, direction: number) => {
     setCurrentIndices(prev => {
       const newIndices = [...prev];
       const mediaCount = projects[projectIndex].media.length;
@@ -106,13 +121,13 @@ export default function Home() {
       {/* About Section */}
       <section className="max-w-2xl mx-auto px-6 py-8 mb-12 text-center border border-gray-800 bg-gray-900">
         <p className="text-lg leading-relaxed font-bold">
-          > DEVELOPPEUR_19ANS <br />
-          > BRETAGNE_FRANCE <br />
-          > SPECIALISATION: WEB3_FULLSTACK <br />
-          > LANGUES: FRANCAIS_ANGLAIS
+          {`> DEVELOPPEUR_19ANS`} <br />
+          {`> BRETAGNE_FRANCE`} <br />
+          {`> SPECIALISATION: WEB3_FULLSTACK`} <br />
+          {`> LANGUES: FRANCAIS_ANGLAIS`}
         </p>
         <div className="mt-6">
-          <div className="text-gray-400 mb-2">> TECHNOLOGIES_PRINCIPALES:</div>
+          <div className="text-gray-400 mb-2">{`> TECHNOLOGIES_PRINCIPALES:`}</div>
           <div className="flex flex-wrap justify-center gap-2">
             <span className="text-xs bg-blue-600 px-2 py-1 rounded">Next.js</span>
             <span className="text-xs bg-sky-600 px-2 py-1 rounded">React</span>
@@ -124,7 +139,7 @@ export default function Home() {
 
       {/* Projects Tree */}
       <section className="max-w-6xl mx-auto px-6 space-y-2 pb-20">
-        <div className="text-gray-500 mb-4">> PROJETS_ ({projects.length})</div>
+        <div className="text-gray-500 mb-4">{`> PROJETS_ (${projects.length})`}</div>
         
         {projects.map((project, projectIndex) => (
           <div key={projectIndex} className="ml-4">
@@ -153,16 +168,16 @@ export default function Home() {
             {expandedProjects[projectIndex] && (
               <div className="ml-8 border-l-2 border-gray-700 pl-4 py-4">
                 <div className="mb-6 bg-gray-900 p-4 rounded">
-                  <div className="text-gray-400 mb-2">> DESCRIPTION:</div>
+                  <div className="text-gray-400 mb-2">{`> DESCRIPTION:`}</div>
                   <p className="font-bold">{project.description}</p>
                   
                   <div className="mt-4">
-                    <div className="text-gray-400 mb-1">> TECHNOS_UTILISEES:</div>
+                    <div className="text-gray-400 mb-1">{`> TECHNOS_UTILISEES:`}</div>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
                         <span 
                           key={tech} 
-                          className={`text-xs px-2 py-1 rounded ${techColors[tech] || 'bg-gray-700'}`}
+                          className={`text-xs px-2 py-1 rounded ${techColors[tech]}`}
                         >
                           {tech}
                         </span>
@@ -171,7 +186,7 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <div className="text-gray-400 mb-2">> MEDIA:</div>
+                <div className="text-gray-400 mb-2">{`> MEDIA:`}</div>
                 <div className="relative h-96 md:h-[32rem] rounded border border-gray-800 bg-black overflow-hidden">
                   {project.media.map((media, mediaIndex) => (
                     <div 
@@ -231,7 +246,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 text-center text-gray-500 border-t border-gray-800 text-xs">
-        <p>© {new Date().getFullYear()} ENZO_ROLANDIN - TOUS_DROITS_RÉSERVÉS</p>
+        <p>{`© ${new Date().getFullYear()} ENZO_ROLANDIN - TOUS_DROITS_RÉSERVÉS`}</p>
       </footer>
     </main>
   );
