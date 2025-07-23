@@ -25,7 +25,7 @@ const projects: Project[] = [
     description: "Plateforme d'aide à l'expatriation avec quizz personnalisé. Intègre : API Google Maps, Prisma ORM, Stripe pour les paiements, et système de recommandation basé sur les réponses. Projet non finalisé mais architecture de base fonctionnelle.",
     technologies: ["Next.js", "React", "Tailwind CSS", "Prisma", "Stripe", "Google Maps API", "TypeScript"],
     media: [
-      { type: 'image', src: '/expatme1.png' },
+      { type: 'video', src: '/expatme0.mp4' },
       { type: 'image', src: '/expatme2.png' },
       { type: 'image', src: '/expatme3.png' },
       { type: 'image', src: '/expatme4.png' }
