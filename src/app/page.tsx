@@ -6,7 +6,7 @@ import { useState } from "react";
 type Technology = 
   'Next.js' | 'React' | 'Tailwind CSS' | 'Prisma' | 'TypeScript' | 'Stripe' | 
   'Google Maps API' | 'Solidity' | 'RainbowKit' | 'Ethers.js' | 'PostgreSQL' | 
-  'Hardhat' | 'IPFS';
+  'Hardhat' | 'IPFS' | 'OpenAI API' | 'Google Auth';
 
 interface Project {
   title: string;
@@ -19,6 +19,7 @@ interface Project {
 }
 
 const projects: Project[] = [
+  
   {
     title: "ExpatMe.fr - 2025 (En développement)",
     description: "Plateforme d'aide à l'expatriation avec quizz personnalisé. Intègre : API Google Maps, Prisma ORM, Stripe pour les paiements, et système de recommandation basé sur les réponses. Projet non finalisé mais architecture de base fonctionnelle.",
@@ -28,6 +29,17 @@ const projects: Project[] = [
       { type: 'image', src: '/expatme2.png' },
       { type: 'image', src: '/expatme3.png' },
       { type: 'image', src: '/expatme4.png' }
+    ]
+  },
+  
+  {
+    title: "Yunaya.fr - 2025",
+    description: "Plateforme de voyance en ligne intégrant l'API OpenAI pour des prédictions personnalisées. Système de paiement via Stripe et authentification sécurisée avec Google Auth. Interface moderne et intuitive développée avec Next.js.",
+    technologies: ["Next.js", "React", "Tailwind CSS", "Stripe", "OpenAI API", "Google Auth"],
+    media: [
+      { type: 'image', src: '/Yunaya 1.png' },
+      { type: 'image', src: '/Yunaya 2.png' },
+      { type: 'video', src: '/Yunaya 3.mp4' }
     ]
   },
   {
@@ -46,7 +58,9 @@ const projects: Project[] = [
     media: [
       { type: 'image', src: '/Virgile 1.png' },
       { type: 'image', src: '/Virgile 2.png' },
-      { type: 'image', src: '/Virgile 3.png' }
+      { type: 'image', src: '/Virgile 3.png' },
+      { type: 'image', src: '/Virgile 4.png' },
+      { type: 'video', src: '/Virgile 5.mp4' }
     ]
   },
   {
@@ -72,7 +86,9 @@ const techColors: Record<Technology, string> = {
   'Ethers.js': 'bg-yellow-600',
   'PostgreSQL': 'bg-indigo-600',
   'Hardhat': 'bg-orange-600',
-  'IPFS': 'bg-teal-600'
+  'IPFS': 'bg-teal-600',
+  'OpenAI API': 'bg-green-600',
+  'Google Auth': 'bg-red-500'
 };
 
 export default function Home() {
@@ -133,6 +149,7 @@ export default function Home() {
             <span className="text-xs bg-sky-600 px-2 py-1 rounded">React</span>
             <span className="text-xs bg-cyan-500 px-2 py-1 rounded">Tailwind CSS</span>
             <span className="text-xs bg-blue-800 px-2 py-1 rounded">TypeScript</span>
+            <span className="text-xs bg-green-600 px-2 py-1 rounded">OpenAI API</span>
           </div>
         </div>
       </section>
